@@ -12,6 +12,12 @@ interface Salon {
   image: string;
   coverImage?: string;
   location: string;
+  phone: string;
+  socials: {
+    facebook?: string;
+    instagram?: string;
+    tiktok?: string;
+  };
   rating: number;
   reviewsCount: number;
   category: "salon" | "peluqueria" | "barberia" | "unas" | "spa";
@@ -32,7 +38,7 @@ interface Booking {
   salonRating: number;
   salonReviewsCount: number;
   services: Service[];
-  date: string; // e.g. "15 Nov 2024"
+  date: string; // e.g. "2 Oct 2026"
   time: string; // e.g. "10:30 AM"
   subtotal: number;
   taxes: number;
@@ -48,6 +54,8 @@ const ALL_SALONS: Salon[] = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBu8Ih8ejtqCIrWH4wR79cm5V0z8IUFC3MSjfnrv7xUpt9-YEs_cfGbjDnsIpyGKLPleM0PSLgbTJOSAyZBpr_2t-e7h-kZLgRInDcnUA8TsMmKbptKmtnWBF36mrcnUF3eCKp1hZ-aEY6OHewRkbaFsMUPHZ-NCDH5mK0t2Q6MPMBxpgbzlmTpzWlXzdzx0sZf61OksaHYKvEkXJa4HxIVCoWT4I-ZlSwwS87Mt1_re7NenDo9qujM",
     coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAaDCIVtcXcu2F6LT4IINAcimvEzZyS6VqP4mXmSDF4fsvzU26lfkhTYMMN99Lsr1ZhgD12VD8GCwIUeedPxWOPLdh_YAjVWQOq9zJSZPSrrd2oqph0YBLWmDsUqPpgKN0lEPKBVqsrOa6vUDyE-1Ftp1x4MdhVPTQpdCQUgeRQ2Xd4l3QiWxW7fUYd_5vlndyT8ZouSm333uTtam-lTymvngqD1ekUDV6VYhxnv02bDbENISNc4o5g",
     location: "Av. San Bernardo 123, Tarija",
+    phone: "+591 61123401",
+    socials: { facebook: "Lumiere Beauty Studio", instagram: "@lumiere.tarija" },
     rating: 4.95,
     reviewsCount: 128,
     category: "salon",
@@ -67,7 +75,9 @@ const ALL_SALONS: Salon[] = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB1qXWz0_mMoms9-HIw_LILOu9VCJWrEyHpfhofo8kq3bPlrBuPYekjfzsKs92G2RGQQJpbxT1dOQc7QKLofJU33kIE5zXKyYbieBmqaXVNAuBK-wKfJBNpxU4ZfeXEQ1XuYm444vHiWzar5xFIpiO0tLwi2z8432upVrN_9fCR-oJRzyGgoYG82F73likWLXNxrpevvpi645SUOwEBnLJ6-Df2JfBc3XoppYscLWsMs2uEtncL6ADN",
     coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDdahvV9L7yH4YpEdpauxime5y0H_grK6muVVvp_fFxZQ9FgDEFEHveysok5sddMl-Tkm-7LRdAzvM3u-pjcnKan0FKJQdpbWo7TMGdHnOwnAdFhlrPLjB3_NM6sfsQBrQTrXFumrA3gu5EmP4EDx4j6c8HiCWLAsWWmY1Z6rsPZ-93W9ptA8dnNauWZNeyw0HSBU-iKo1SYCI4G1XK5tuZHHQQgPLgh51spNBzW1MnDcsEBM9j3PgQ",
     location: "Calle Junín, Tarija",
-    rating: 4.8,
+    phone: "+591 70234561",
+    socials: { instagram: "@nailart.tarija", tiktok: "@nailart.tarija" },
+    rating: 3.2,
     reviewsCount: 95,
     category: "unas",
     distance: "1.5 km",
@@ -85,7 +95,9 @@ const ALL_SALONS: Salon[] = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCZMh8oQqyttGeqmMqoRPSNoKG-igEH7fdBc1RiTy7FxYuHyXmggOxeGQgp3EwNt0_p48m69O8Py73BlQtqujcATZBedVvcA2HJA5g8VulxEOuhvnxzBV6HVJhG5T3KojGdKgaV0Kqwi5KDLkULfFxLJ5HppBRcFqOSPunAb7s-V80QuoTrfJ_-KWiqGPmErtv-rizZzJypZo3qBI6hJKOnsappzlzM-1CR5RJbcECJs7P8NPCEKNmU",
     coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCZMh8oQqyttGeqmMqoRPSNoKG-igEH7fdBc1RiTy7FxYuHyXmggOxeGQgp3EwNt0_p48m69O8Py73BlQtqujcATZBedVvcA2HJA5g8VulxEOuhvnxzBV6HVJhG5T3KojGdKgaV0Kqwi5KDLkULfFxLJ5HppBRcFqOSPunAb7s-V80QuoTrfJ_-KWiqGPmErtv-rizZzJypZo3qBI6hJKOnsappzlzM-1CR5RJbcECJs7P8NPCEKNmU",
     location: "Plaza Principal, Tarija",
-    rating: 4.9,
+    phone: "+591 67781234",
+    socials: { facebook: "The Gentleman's Cut Tarija" },
+    rating: 4.3,
     reviewsCount: 210,
     category: "barberia",
     distance: "900 m",
@@ -103,6 +115,8 @@ const ALL_SALONS: Salon[] = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhtr2o7rle7iGGvpdyviDz3ACfBsxI6Xe9eSd9MduR2JaFEzDpjRpNKG-tI61_AeUx_oOVIZi9dZ9wbUsAwl5RMGR_DIuhAi7LXkr2uDktn9jlsTLBOaWN-NHgQKnCqAYPu1VJ3pDfq9_FqPnKrBfAZk8LTMBCDyt7BTDHNacLl9RJzI-J5sLa58BVisjpdr-xiTwLqrj40Gr8mNk7WFXrlFbylVoL1ktta92cBtGUt4mHoXpjH9HT",
     coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhtr2o7rle7iGGvpdyviDz3ACfBsxI6Xe9eSd9MduR2JaFEzDpjRpNKG-tI61_AeUx_oOVIZi9dZ9wbUsAwl5RMGR_DIuhAi7LXkr2uDktn9jlsTLBOaWN-NHgQKnCqAYPu1VJ3pDfq9_FqPnKrBfAZk8LTMBCDyt7BTDHNacLl9RJzI-J5sLa58BVisjpdr-xiTwLqrj40Gr8mNk7WFXrlFbylVoL1ktta92cBtGUt4mHoXpjH9HT",
     location: "Av. Víctor Paz, Tarija",
+    phone: "+591 61880972",
+    socials: { instagram: "@glow.aesthetics", tiktok: "@glowaesthetics" },
     rating: 4.7,
     reviewsCount: 64,
     category: "spa",
@@ -121,7 +135,9 @@ const ALL_SALONS: Salon[] = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDWftEUd_0ejAD7wH30DSExB2ttWx93DP03OEe8WTwOSFpRLvLD7CWE1BjY3OjVmnY8-SSQfI70eWBW-QwqZkL1SL915PA1Gzz25yKdqA0RICWPbP4ZOfrx1hMwkaRdXd__TWPE1l7OxZOqhcG2MQLu92frvjFHqD81uAzCdnyVBKWKY35JuBkic8LO5E_uZ7aIgDfHqWaXfWuXIDTpF4pe9kMRvcRrfZEGC_ayLI_WnflgSKKCvQjI",
     coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDWftEUd_0ejAD7wH30DSExB2ttWx93DP03OEe8WTwOSFpRLvLD7CWE1BjY3OjVmnY8-SSQfI70eWBW-QwqZkL1SL915PA1Gzz25yKdqA0RICWPbP4ZOfrx1hMwkaRdXd__TWPE1l7OxZOqhcG2MQLu92frvjFHqD81uAzCdnyVBKWKY35JuBkic8LO5E_uZ7aIgDfHqWaXfWuXIDTpF4pe9kMRvcRrfZEGC_ayLI_WnflgSKKCvQjI",
     location: "Av. Victor Paz Estenssoro",
-    rating: 4.9,
+    phone: "+591 72904518",
+    socials: { facebook: "Salón Eleganza Tarija", instagram: "@eleganza.tarija", tiktok: "@eleganza.tarija" },
+    rating: 3.2,
     reviewsCount: 184,
     category: "salon",
     distance: "1.2 km",
@@ -141,7 +157,9 @@ const ALL_SALONS: Salon[] = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFJEDzRGtXjv5k90tnC42NZRLQ-U-XjUr6IZmrhaMdzklEOwc1xhob9XyzHad7vZBlPeArXzaq13fRdPiPhGk_yOSlxabvQnfdOmKeJIP6VWpD5_QE0AzVu2KUtZf221KBH8qXUmLJNo3xCKiIR0DgZilETuNxKEqA--lXMfmAQV-6cXT1L6-Jsmf01UV8-JahEQwB4np2JA50kYL-K0B-fzxq0W16-wcNMyZ-hbNeHHTwGe8wpZjp",
     coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFJEDzRGtXjv5k90tnC42NZRLQ-U-XjUr6IZmrhaMdzklEOwc1xhob9XyzHad7vZBlPeArXzaq13fRdPiPhGk_yOSlxabvQnfdOmKeJIP6VWpD5_QE0AzVu2KUtZf221KBH8qXUmLJNo3xCKiIR0DgZilETuNxKEqA--lXMfmAQV-6cXT1L6-Jsmf01UV8-JahEQwB4np2JA50kYL-K0B-fzxq0W16-wcNMyZ-hbNeHHTwGe8wpZjp",
     location: "Barrio Las Panosas",
-    rating: 4.8,
+    phone: "+591 60331789",
+    socials: { tiktok: "@bellavida.estetica" },
+    rating: 2.4,
     reviewsCount: 96,
     category: "salon",
     distance: "2.4 km",
@@ -161,7 +179,9 @@ const ALL_SALONS: Salon[] = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDdahvV9L7yH4YpEdpauxime5y0H_grK6muVVvp_fFxZQ9FgDEFEHveysok5sddMl-Tkm-7LRdAzvM3u-pjcnKan0FKJQdpbWo7TMGdHnOwnAdFhlrPLjB3_NM6sfsQBrQTrXFumrA3gu5EmP4EDx4j6c8HiCWLAsWWmY1Z6rsPZ-93W9ptA8dnNauWZNeyw0HSBU-iKo1SYCI4G1XK5tuZHHQQgPLgh51spNBzW1MnDcsEBM9j3PgQ",
     coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDdahvV9L7yH4YpEdpauxime5y0H_grK6muVVvp_fFxZQ9FgDEFEHveysok5sddMl-Tkm-7LRdAzvM3u-pjcnKan0FKJQdpbWo7TMGdHnOwnAdFhlrPLjB3_NM6sfsQBrQTrXFumrA3gu5EmP4EDx4j6c8HiCWLAsWWmY1Z6rsPZ-93W9ptA8dnNauWZNeyw0HSBU-iKo1SYCI4G1XK5tuZHHQQgPLgh51spNBzW1MnDcsEBM9j3PgQ",
     location: "Calle General Trigo",
-    rating: 4.9,
+    phone: "+591 74556623",
+    socials: { instagram: "@glamour.tarija" },
+    rating: 4.2,
     reviewsCount: 210,
     category: "unas",
     distance: "800 m",
@@ -192,7 +212,7 @@ const INITIAL_BOOKINGS: Booking[] = [
       { name: "Lavado y Peinado", price: 80 },
       { name: "Tratamiento Capilar", price: 150 }
     ],
-    date: "15 Nov 2024",
+    date: "2 Oct 2026",
     time: "10:30 AM",
     subtotal: 350,
     taxes: 15,
@@ -200,6 +220,37 @@ const INITIAL_BOOKINGS: Booking[] = [
     status: "Confirmada"
   }
 ];
+
+// Premium golden star rating: 1-5 filled stars based on the score
+function StarRating({ rating, size = 12 }: { rating: number; size?: number }) {
+  const filled = Math.max(1, Math.min(5, Math.round(rating)));
+  return (
+    <span className="flex items-center gap-[1px]">
+      {Array.from({ length: 5 }, (_, i) => (
+        <span
+          key={i}
+          className="material-symbols-outlined"
+          style={{
+            fontSize: size,
+            color: i < filled ? "#f2b63d" : "#4a4442",
+            fontVariationSettings: i < filled ? "'FILL' 1" : "'FILL' 0",
+            textShadow: i < filled ? "0 0 6px rgba(242,182,61,0.55)" : "none",
+          }}
+        >
+          star
+        </span>
+      ))}
+    </span>
+  );
+}
+
+const CATEGORY_LABELS: Record<Salon["category"], string> = {
+  salon: "Salón de Belleza",
+  peluqueria: "Peluquería",
+  barberia: "Barbería",
+  unas: "Uñas",
+  spa: "Spa",
+};
 
 export default function App() {
   // Navigation: 'explorar' | 'destacados' | 'citas' | 'mi-reserva'
@@ -212,11 +263,50 @@ export default function App() {
     ALL_SALONS[0].services[1], // Lavado y Peinado
     ALL_SALONS[0].services[2]  // Tratamiento Capilar
   ]);
-  const [selectedDateDay, setSelectedDateDay] = useState<number>(15); // Day 15
+  const [selectedDateDay, setSelectedDateDay] = useState<number>(2); // Day 2
   const [selectedTime, setSelectedTime] = useState<string>("10:30 AM");
 
   // Local state for interactive filters
   const [searchQuery, setSearchQuery] = useState("");
+  const [typedPlaceholder, setTypedPlaceholder] = useState("");
+
+  // Premium typing effect on the search placeholder (cycles every 30s, 40s, 50s)
+  useEffect(() => {
+    const TYPING_TEXT = "Buscar salones, servicios, zonas...";
+    const INTERVALS = [30000, 40000, 50000];
+    let cancelled = false;
+    let charTimer: ReturnType<typeof setTimeout>;
+    let cycleTimer: ReturnType<typeof setTimeout>;
+    let intervalIndex = 0;
+    const typeText = () => {
+      if (cancelled) return;
+      let i = 0;
+      const typeChar = () => {
+        if (cancelled) return;
+        i++;
+        const done = i >= TYPING_TEXT.length;
+        setTypedPlaceholder(TYPING_TEXT.slice(0, i) + (done ? "" : "▌"));
+        if (!done) {
+          charTimer = setTimeout(typeChar, 45);
+        } else {
+          cycleTimer = setTimeout(() => {
+            if (cancelled) return;
+            setTypedPlaceholder("");
+            const wait = INTERVALS[intervalIndex % INTERVALS.length];
+            intervalIndex++;
+            cycleTimer = setTimeout(typeText, wait);
+          }, 2500);
+        }
+      };
+      typeChar();
+    };
+    typeText();
+    return () => {
+      cancelled = true;
+      clearTimeout(charTimer);
+      clearTimeout(cycleTimer);
+    };
+  }, []);
   const [selectedCategory, setSelectedCategory] = useState<string>("todos");
   const [destacadosFilter, setDestacadosFilter] = useState<"valorados" | "nuevos" | "ofertas">("valorados");
 
@@ -239,6 +329,11 @@ export default function App() {
   // UI notifications and modal state
   const [isConfirmingModalOpen, setIsConfirmingModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [detailSalon, setDetailSalon] = useState<Salon | null>(null);
+  const [detailSelected, setDetailSelected] = useState<string[]>([]);
+  const [showAvailable, setShowAvailable] = useState(false);
+  const [showBookingPanel, setShowBookingPanel] = useState(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   
   // Save modifications to LocalStorage
@@ -284,6 +379,29 @@ export default function App() {
     }
   };
 
+  // Share salon with friends (native share sheet, clipboard fallback)
+  const handleShare = async (salon: Salon, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const shareData = {
+      title: `${salon.name} · Tarija Sanctuary`,
+      text: `${salon.name} en ${salon.location} · ${salon.rating} (${salon.reviewsCount} reseñas). ¡Reserva tu cita!`,
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch {
+        // user dismissed the share sheet
+      }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(`${shareData.title} — ${shareData.text} ${shareData.url}`);
+      } catch {
+        // clipboard unavailable
+      }
+    }
+  };
+
   // Select a salon and automatically pre-fill services and navigate to booking
   const handleSelectSalonToBook = (salon: Salon) => {
     setSelectedSalon(salon);
@@ -294,7 +412,7 @@ export default function App() {
       setSelectedServices([]);
     }
     setActiveTab("citas");
-    triggerToast(`Agendando en ${salon.name}`);
+    setShowAvailable(false);
   };
 
   // Toggle service selection in booking screen
@@ -302,7 +420,6 @@ export default function App() {
     if (selectedServices.some(s => s.name === service.name)) {
       // Keep at least one service selected
       if (selectedServices.length === 1) {
-        triggerToast("Debes elegir al menos un servicio");
         return;
       }
       setSelectedServices(selectedServices.filter(s => s.name !== service.name));
@@ -328,7 +445,7 @@ export default function App() {
       salonRating: selectedSalon.rating,
       salonReviewsCount: selectedSalon.reviewsCount,
       services: [...selectedServices],
-      date: `${selectedDateDay} Nov 2024`,
+      date: `${selectedDateDay} Oct 2026`,
       time: selectedTime,
       subtotal,
       taxes,
@@ -337,6 +454,7 @@ export default function App() {
     };
 
     setConfirmedBookings([newBooking, ...confirmedBookings]);
+    setShowBookingPanel(false);
     setIsSuccessModalOpen(true);
   };
 
@@ -358,11 +476,13 @@ export default function App() {
     return matchesSearch && matchesCategory;
   });
 
-  const filteredDestacadosSalons = ALL_SALONS.filter(salon => {
-    // Show only the 3 specific high-fidelity featured salons + others matching rating
-    if (destacadosFilter === "valorados") {
-      return salon.rating >= 4.8;
-    } else if (destacadosFilter === "nuevos") {
+  // Curated order for "valorados": 5 salons sorted 5, 5, 4, 4, 3 stars
+  const VALORADOS_ORDER = ["lumiere", "glow", "gentleman", "glamour", "eleganza"];
+
+  const filteredDestacadosSalons = destacadosFilter === "valorados"
+    ? VALORADOS_ORDER.map(id => ALL_SALONS.find(s => s.id === id)!).filter(Boolean)
+    : ALL_SALONS.filter(salon => {
+    if (destacadosFilter === "nuevos") {
       // Just a mock list permutation for high fidelity feel
       return ["bellavida", "lumiere", "glow"].includes(salon.id);
     } else {
@@ -381,29 +501,36 @@ export default function App() {
         <header className="shrink-0 sticky top-0 w-full z-50 pt-3 px-6 bg-[#131315]/85 backdrop-blur-2xl border-b border-[#201f21]/30">
         {/* Header Branding Container */}
           <div className="h-14 mt-2 flex items-center justify-between">
-            <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-[#fec4b0]">
-                Tarija Sanctuary
-              </span>
-              <h1 className="text-[22px] font-bold tracking-tight text-white leading-tight capitalize">
-                {activeTab === "explorar" && "Explorar"}
-                {activeTab === "destacados" && "Destacados"}
-                {activeTab === "citas" && "Citas"}
-                {activeTab === "mi-reserva" && "Mi Reserva"}
-              </h1>
+            <div className="flex items-center gap-3 min-w-0">
+              <button 
+                onClick={() => setIsMenuOpen(true)}
+                className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#fec4b0] to-[#713a24] p-[2px] flex items-center justify-center shrink-0 active:scale-95 transition-transform cursor-pointer"
+              >
+                <img 
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgyjyB21B9RPYiDrRCsHhrJrE52RoouOhYZEpN5cOaeowRIYkHqcIIzLN7LuxodvyKyptJAA7OaYTFfzHJqdU4JK5Gix2sbBbj9lMsK5Y3VU2MMrbNQ0SqOHauwMmnLw_ZrgU5JD70xsCqStnCuP4YTGWkMm5l-zop6z6mjN1-X8L0WUQa3o7XlIOzM-cNzh4E6VeTjTFnwcpGsNauKrBJ48TGXPpSNV4_YBKRfi06sp-FqyL2e1kw" 
+                  alt="Silvana Profile" 
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </button>
+              <div className="flex flex-col min-w-0">
+                <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-[#fec4b0]">
+                  Tarija Sanctuary
+                </span>
+                <h1 className="text-[22px] font-bold tracking-tight text-white leading-tight capitalize">
+                  {activeTab === "explorar" && "Explorar"}
+                  {activeTab === "destacados" && "Destacados"}
+                  {activeTab === "citas" && "Citas"}
+                  {activeTab === "mi-reserva" && "Mi Reserva"}
+                </h1>
+              </div>
             </div>
             
-            {/* Quick Profile Avatar Click triggers Easter Egg message */}
-            <button 
-              onClick={() => triggerToast("¡Hola Valentina! Disfruta de tu experiencia VIP en Tarija")}
-              className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#fec4b0] to-[#713a24] p-[1.5px] flex items-center justify-center shrink-0 active:scale-95 transition-transform cursor-pointer"
-            >
-              <img 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgyjyB21B9RPYiDrRCsHhrJrE52RoouOhYZEpN5cOaeowRIYkHqcIIzLN7LuxodvyKyptJAA7OaYTFfzHJqdU4JK5Gix2sbBbj9lMsK5Y3VU2MMrbNQ0SqOHauwMmnLw_ZrgU5JD70xsCqStnCuP4YTGWkMm5l-zop6z6mjN1-X8L0WUQa3o7XlIOzM-cNzh4E6VeTjTFnwcpGsNauKrBJ48TGXPpSNV4_YBKRfi06sp-FqyL2e1kw" 
-                alt="Valentina Profile" 
-                className="w-full h-full object-cover rounded-full"
-              />
-            </button>
+              <button
+                onClick={() => setIsMenuOpen(true)}
+                className="w-10 h-10 rounded-full bg-[#201f21] border border-[#353437]/40 flex items-center justify-center text-[#fec4b0] shrink-0 active:scale-95 transition-transform cursor-pointer"
+              >
+                <span className="material-symbols-outlined text-[20px]">menu</span>
+              </button>
           </div>
         </header>
 
@@ -429,7 +556,7 @@ export default function App() {
                     Experiencia Privada
                   </span>
                   <h2 className="text-2xl font-bold text-white tracking-tight">
-                    Hola, Valentina
+                    Hola, Silvana 👋
                   </h2>
                   <p className="text-xs text-[#d5c3bd]">Disfruta del cuidado premium hoy</p>
                 </div>
@@ -445,7 +572,7 @@ export default function App() {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Buscar salones, servicios, zonas..." 
+                    placeholder={typedPlaceholder}
                     className="w-full bg-transparent text-sm text-[#e5e1e4] placeholder-[#9e8d88] focus:outline-none"
                   />
                   {searchQuery && (
@@ -516,7 +643,7 @@ export default function App() {
                     return (
                       <div 
                         key={salon.id}
-                        onClick={() => handleSelectSalonToBook(salon)}
+                        onClick={() => { setDetailSelected([]); setDetailSalon(salon); }}
                         className="group relative flex items-center p-3 rounded-3xl bg-[#201f21]/60 backdrop-blur-xl border border-[#353437]/30 hover:border-[#fec4b0]/30 hover:bg-[#2a2a2c]/50 transition-all duration-300 shadow-md cursor-pointer active:scale-[0.99]"
                       >
                         {/* Salon image thumbnail */}
@@ -547,23 +674,31 @@ export default function App() {
                           <div className="flex items-center justify-between mt-2">
                             {/* Stars badge */}
                             <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#353437]/60">
-                              <span className="material-symbols-outlined text-[13px] text-[#fec4b0]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                              <StarRating rating={salon.rating} />
                               <span className="text-xs font-bold text-white">{salon.rating}</span>
                               <span className="text-[10px] text-[#d5c3bd]">({salon.reviewsCount})</span>
                             </div>
 
-                            {/* Fav heart toggle button */}
-                            <button
-                              onClick={(e) => toggleFavorite(salon.id, e)}
-                              className="w-9 h-9 rounded-full flex items-center justify-center bg-[#2a2a2c]/60 hover:bg-[#353437] text-[#fec4b0] active:scale-90 transition-transform"
-                            >
-                              <span 
-                                className="material-symbols-outlined text-[18px]"
-                                style={{ fontVariationSettings: isFav ? "'FILL' 1" : "'FILL' 0" }}
+                            {/* Fav + Share buttons */}
+                            <div className="flex items-center gap-1.5 shrink-0">
+                              <button
+                                onClick={(e) => handleShare(salon, e)}
+                                className="w-9 h-9 rounded-full flex items-center justify-center bg-[#2a2a2c]/60 hover:bg-[#353437] text-[#fec4b0] active:scale-90 transition-transform"
                               >
-                                favorite
-                              </span>
-                            </button>
+                                <span className="material-symbols-outlined text-[18px]">share</span>
+                              </button>
+                              <button
+                                onClick={(e) => toggleFavorite(salon.id, e)}
+                                className="w-9 h-9 rounded-full flex items-center justify-center bg-[#2a2a2c]/60 hover:bg-[#353437] text-[#fec4b0] active:scale-90 transition-transform"
+                              >
+                                <span 
+                                  className="material-symbols-outlined text-[18px]"
+                                  style={{ fontVariationSettings: isFav ? "'FILL' 1" : "'FILL' 0" }}
+                                >
+                                  favorite
+                                </span>
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -665,9 +800,9 @@ export default function App() {
                 {filteredDestacadosSalons.map((salon) => {
                   const isBookmarked = bookmarks.includes(salon.id);
                   return (
-                    <article 
-                      key={salon.id}
-                      onClick={() => handleSelectSalonToBook(salon)}
+                      <article 
+                        key={salon.id}
+                        onClick={() => { setDetailSelected([]); setDetailSalon(salon); }}
                       className="group relative rounded-3xl bg-[#201f21]/40 border border-[#353437]/30 backdrop-blur-xl overflow-hidden shadow-2xl active:scale-[0.99] transition-all duration-300 cursor-pointer"
                     >
                       {/* Cover Photo */}
@@ -690,7 +825,13 @@ export default function App() {
                           </span>
                         </div>
 
-                        {/* Floating bookmark badge button */}
+                        {/* Floating share + bookmark buttons */}
+                        <button 
+                          onClick={(e) => handleShare(salon, e)}
+                          className="absolute top-3 right-14 w-9 h-9 rounded-full bg-[#0e0e10]/70 backdrop-blur-md flex items-center justify-center text-[#fec4b0] hover:bg-[#0e0e10]/95 active:scale-90 transition-transform"
+                        >
+                          <span className="material-symbols-outlined text-[18px]">share</span>
+                        </button>
                         <button 
                           onClick={(e) => toggleBookmark(salon.id, e)}
                           className="absolute top-3 right-3 w-9 h-9 rounded-full bg-[#0e0e10]/70 backdrop-blur-md flex items-center justify-center text-[#fec4b0] hover:bg-[#0e0e10]/95 active:scale-90 transition-transform"
@@ -712,7 +853,7 @@ export default function App() {
                           </h3>
                           {/* Rating Pill */}
                           <div className="flex items-center gap-1 bg-[#353437]/60 px-2.5 py-0.5 rounded-full shrink-0">
-                            <span className="material-symbols-outlined text-[13px] text-[#fec4b0]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                            <StarRating rating={salon.rating} />
                             <span className="text-xs font-bold text-white">{salon.rating}</span>
                             <span className="text-[10px] text-[#d5c3bd]">({salon.reviewsCount})</span>
                           </div>
@@ -780,55 +921,80 @@ export default function App() {
                   </span>
                 </div>
 
-                <div className="space-y-2.5">
-                  {selectedSalon.services.map((srv) => {
-                    const isChecked = selectedServices.some(s => s.name === srv.name);
-                    return (
-                      <div 
+                <div className="space-y-2">
+                  {selectedServices.map((srv) => (
+                    <div
+                      key={srv.name}
+                      onClick={() => handleToggleService(srv)}
+                      className="flex items-center justify-between rounded-xl border transition-all cursor-pointer overflow-hidden p-2.5 bg-[#713a24]/30 border-[#fec4b0]/50 text-white shadow-[0_0_12px_rgba(224,169,150,0.2)]"
+                    >
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span
+                          className="material-symbols-outlined text-[18px] text-[#fec4b0]"
+                          style={{ fontVariationSettings: "'FILL' 1" }}
+                        >
+                          check_circle
+                        </span>
+                        <span className="truncate text-xs font-medium">{srv.name}</span>
+                      </div>
+                      <div className="flex items-center gap-1 shrink-0">
+                        <span className="font-bold text-[#fec4b0] text-xs">Bs {srv.price}</span>
+                        <span className="material-symbols-outlined text-[16px] text-[#9e8d88]">expand_less</span>
+                      </div>
+                    </div>
+                  ))}
+
+                  {selectedSalon.services.some(srv => !selectedServices.some(s => s.name === srv.name)) && (
+                    <button
+                      onClick={() => setShowAvailable(!showAvailable)}
+                      className="w-full flex items-center justify-center gap-1.5 py-2 rounded-full bg-[#2a2a2c]/70 border border-dashed border-[#fec4b0]/40 text-[#fec4b0] text-[11px] font-bold uppercase tracking-wider active:scale-[0.99] transition-all cursor-pointer"
+                    >
+                      <span>Servicios disponibles ({selectedSalon.services.filter(srv => !selectedServices.some(s => s.name === srv.name)).length})</span>
+                      <span className="material-symbols-outlined text-[16px]">{showAvailable ? "expand_less" : "expand_more"}</span>
+                    </button>
+                  )}
+
+                  {showAvailable && selectedSalon.services
+                    .filter(srv => !selectedServices.some(s => s.name === srv.name))
+                    .map((srv) => (
+                      <div
                         key={srv.name}
                         onClick={() => handleToggleService(srv)}
-                        className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${
-                          isChecked 
-                            ? "bg-[#713a24]/30 border-[#fec4b0]/50 text-white" 
-                            : "bg-[#2a2a2c]/40 border-[#353437]/20 text-[#d5c3bd] hover:border-[#353437]/80"
-                        }`}
+                        className="flex items-center justify-between rounded-xl border transition-all cursor-pointer overflow-hidden px-2.5 py-1.5 bg-[#2a2a2c]/40 border-[#353437]/20 text-[#9e8d88] hover:border-[#353437]/70"
                       >
                         <div className="flex items-center gap-2 min-w-0">
-                          <span 
-                            className={`material-symbols-outlined text-[18px] transition-colors ${
-                              isChecked ? "text-[#fec4b0]" : "text-[#9e8d88]"
-                            }`}
-                            style={{ fontVariationSettings: isChecked ? "'FILL' 1" : "'FILL' 0" }}
+                          <span
+                            className="material-symbols-outlined text-[16px] text-[#9e8d88]"
+                            style={{ fontVariationSettings: "'FILL' 0" }}
                           >
-                            {isChecked ? "check_circle" : "radio_button_unchecked"}
+                            radio_button_unchecked
                           </span>
-                          <span className="text-xs font-medium truncate">{srv.name}</span>
+                          <span className="truncate text-[11px]">{srv.name}</span>
                         </div>
-                        <span className="text-xs font-bold text-[#fec4b0] shrink-0">Bs {srv.price}</span>
+                        <span className="font-bold text-[#fec4b0] text-[11px] opacity-80 shrink-0">Bs {srv.price}</span>
                       </div>
-                    );
-                  })}
+                    ))}
                 </div>
               </div>
 
-              {/* Haute-Glass Calendar Container - November 2024 */}
-              <div className="w-full rounded-3xl bg-[#201f21]/70 border border-[#353437]/30 p-4 shadow-xl relative overflow-hidden">
+              {/* Haute-Glass Calendar Container - October 2026 */}
+              <div className="w-full rounded-3xl bg-[#201f21]/70 border border-[#353437]/30 p-2 shadow-xl relative overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#fec4b0]/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 {/* Calendar Header */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-2">
                   <button 
-                    onClick={() => triggerToast("El calendario está fijado en Noviembre 2024 para tu reserva VIP")}
+                    onClick={() => triggerToast("El calendario está fijado en Octubre 2026 para tu reserva VIP")}
                     className="w-8 h-8 rounded-full bg-[#2a2a2c] flex items-center justify-center text-[#d5c3bd] hover:text-white"
                   >
                     <span className="material-symbols-outlined text-[18px]">chevron_left</span>
                   </button>
                   <div className="flex items-center gap-1.5">
                     <span className="material-symbols-outlined text-[16px] text-[#fec4b0]">calendar_month</span>
-                    <span className="text-sm font-bold text-white">Noviembre 2024</span>
+                    <span className="text-sm font-bold text-white">Octubre 2026</span>
                   </div>
                   <button 
-                    onClick={() => triggerToast("El calendario está fijado en Noviembre 2024 para tu reserva VIP")}
+                    onClick={() => triggerToast("El calendario está fijado en Octubre 2026 para tu reserva VIP")}
                     className="w-8 h-8 rounded-full bg-[#2a2a2c] flex items-center justify-center text-[#d5c3bd] hover:text-white"
                   >
                     <span className="material-symbols-outlined text-[18px]">chevron_right</span>
@@ -836,7 +1002,7 @@ export default function App() {
                 </div>
 
                 {/* Calendar Week Days Header */}
-                <div className="grid grid-cols-7 text-center mb-2.5 text-[10px] font-bold text-[#9e8d88] tracking-widest uppercase opacity-70">
+                <div className="grid grid-cols-7 text-center mb-1.5 text-xs font-bold text-[#9e8d88] tracking-widest uppercase">
                   <div>L</div>
                   <div>M</div>
                   <div>X</div>
@@ -846,16 +1012,15 @@ export default function App() {
                   <div>D</div>
                 </div>
 
-                {/* Calendar Grid (Nov 1 2024 is Friday) */}
-                <div className="grid grid-cols-7 gap-y-2 text-center items-center text-xs">
-                  {/* Blank cells for padding (Nov 1 is Friday, so 4 empty days M, T, W, Th) */}
-                  <div className="py-2"></div>
+                {/* Calendar Grid (Oct 1 2026 is Thursday) */}
+                <div className="grid grid-cols-7 gap-y-0.5 text-center items-center text-[11px]">
+                  {/* Blank cells for padding (Oct 1 is Thursday, so 3 empty days L, M, X) */}
                   <div className="py-2"></div>
                   <div className="py-2"></div>
                   <div className="py-2"></div>
 
-                  {/* Generate Days 1 to 30 */}
-                  {Array.from({ length: 30 }, (_, index) => {
+                  {/* Generate Days 1 to 31 */}
+                  {Array.from({ length: 31 }, (_, index) => {
                     const day = index + 1;
                     const isSelected = selectedDateDay === day;
                     // Mock dots for availability
@@ -866,15 +1031,15 @@ export default function App() {
                         key={day}
                         onClick={() => {
                           setSelectedDateDay(day);
-                          triggerToast(`Fecha de reserva: ${day} de Noviembre`);
+                          setShowAvailable(false);
                         }}
-                        className={`flex flex-col items-center justify-center h-9 w-9 mx-auto rounded-full transition-all relative ${
+                        className={`flex flex-col items-center justify-center h-7 w-7 mx-auto rounded-full transition-all relative ${
                           isSelected 
                             ? "bg-[#e0a996] text-[#311307] font-bold shadow-[0_4px_14px_rgba(224,169,150,0.4)] scale-105" 
                             : "text-[#e5e1e4] hover:bg-[#353437]"
                         }`}
                       >
-                        <span className="font-semibold">{day}</span>
+                        <span className="font-semibold text-[13px] leading-none">{day}</span>
                         {/* Status dot below day number */}
                         {hasDot && (
                           <span className={`w-1 h-1 rounded-full mt-0.5 ${
@@ -911,7 +1076,7 @@ export default function App() {
                         key={slot}
                         onClick={() => {
                           setSelectedTime(slot);
-                          triggerToast(`Hora elegida: ${slot}`);
+                          setShowAvailable(false);
                         }}
                         className={`h-11 rounded-full flex flex-col items-center justify-center relative transition-all active:scale-95 ${
                           isSelected 
@@ -930,7 +1095,7 @@ export default function App() {
               {/* Continuar to Booking Summary CTA Button */}
               <div className="pt-2 space-y-2">
                 <button
-                  onClick={() => setActiveTab("mi-reserva")}
+                  onClick={() => { setShowBookingPanel(true); setActiveTab("mi-reserva"); }}
                   className="w-full h-13 rounded-full bg-gradient-to-r from-[#fec4b0] via-[#e0a996] to-[#ffb599] text-[#311307] font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(224,169,150,0.3)] hover:brightness-105 active:scale-98 transition-all cursor-pointer"
                 >
                   <span>Continuar</span>
@@ -947,6 +1112,8 @@ export default function App() {
           {activeTab === "mi-reserva" && (
             <div className="animate-fadeIn">
               
+              {showBookingPanel && (
+              <>
               {/* Top Hero Salon visual preview */}
               <div className="relative w-full h-[250px] overflow-hidden bg-black">
                 <img 
@@ -957,7 +1124,7 @@ export default function App() {
                 {/* Back to change booking variables */}
                 <button 
                   onClick={() => setActiveTab("citas")}
-                  className="absolute top-4 left-4 w-9 h-9 rounded-full bg-[#131315]/80 backdrop-blur-md border border-[#353437]/40 flex items-center justify-center text-white active:scale-95 transition-transform"
+                  className="absolute top-4 left-4 z-10 w-9 h-9 rounded-full bg-[#131315]/80 backdrop-blur-md border border-[#353437]/40 flex items-center justify-center text-white active:scale-95 transition-transform"
                 >
                   <span className="material-symbols-outlined text-[18px]">arrow_back</span>
                 </button>
@@ -990,7 +1157,7 @@ export default function App() {
                     </div>
                     {/* Stars badge */}
                     <div className="flex items-center gap-1 bg-[#131315]/80 px-2.5 py-1 rounded-full shrink-0">
-                      <span className="material-symbols-outlined text-[#fec4b0] text-[13px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                      <StarRating rating={selectedSalon.rating} />
                       <span className="text-xs font-bold text-white">{selectedSalon.rating}</span>
                       <span className="text-[9px] text-[#d5c3bd]">({selectedSalon.reviewsCount})</span>
                     </div>
@@ -1031,7 +1198,7 @@ export default function App() {
                       </div>
                       <div className="flex flex-col min-w-0">
                         <span className="text-[9px] uppercase font-bold text-[#9e8d88]">Fecha</span>
-                        <span className="text-xs font-bold text-white truncate">{selectedDateDay} Nov 2024</span>
+                        <span className="text-xs font-bold text-white truncate">{selectedDateDay} Oct 2026</span>
                       </div>
                     </div>
 
@@ -1083,9 +1250,12 @@ export default function App() {
                   <span className="material-symbols-outlined text-[18px]">calendar_month</span>
                   <span>Reserva Ahora</span>
                 </button>
+              </div>
+              </>
+              )}
 
                 {/* List of active & past reservations */}
-                <div className="space-y-3.5 pt-4">
+                <div className="px-5 space-y-3.5 pt-4">
                   <h3 className="text-sm font-bold tracking-tight text-white uppercase text-left border-b border-[#353437]/20 pb-2 flex items-center gap-1">
                     <span className="material-symbols-outlined text-xs text-[#fec4b0]">receipt_long</span>
                     <span>Tus Reservas Agendadas</span>
@@ -1133,9 +1303,7 @@ export default function App() {
                     </div>
                   )}
                 </div>
-
               </div>
-            </div>
           )}
 
         </main>
@@ -1148,7 +1316,6 @@ export default function App() {
             <button 
               onClick={() => {
                 setActiveTab("explorar");
-                triggerToast("Explora salones de alta gama en Tarija");
               }}
               className={`flex flex-col items-center justify-center w-16 h-12 transition-all cursor-pointer ${
                 activeTab === "explorar" 
@@ -1156,7 +1323,7 @@ export default function App() {
                   : "text-[#d5c3bd] opacity-75 hover:opacity-100"
               }`}
             >
-              <span className="material-symbols-outlined text-[21px]" style={{ fontVariationSettings: activeTab === "explorar" ? "'FILL' 1" : "'FILL' 0" }}>explore</span>
+              <span className="material-symbols-outlined text-[21px]" style={{ fontVariationSettings: activeTab === "explorar" ? "'FILL' 1" : "'FILL' 0" }}>spa</span>
               <span className="text-[10px] tracking-tight mt-0.5">Explorar</span>
             </button>
 
@@ -1164,7 +1331,6 @@ export default function App() {
             <button 
               onClick={() => {
                 setActiveTab("destacados");
-                triggerToast("Selección de más valorados y tendencias");
               }}
               className={`flex flex-col items-center justify-center w-16 h-12 transition-all cursor-pointer ${
                 activeTab === "destacados" 
@@ -1172,7 +1338,7 @@ export default function App() {
                   : "text-[#d5c3bd] opacity-75 hover:opacity-100"
               }`}
             >
-              <span className="material-symbols-outlined text-[21px]" style={{ fontVariationSettings: activeTab === "destacados" ? "'FILL' 1" : "'FILL' 0" }}>auto_awesome</span>
+              <span className="material-symbols-outlined text-[21px]" style={{ fontVariationSettings: activeTab === "destacados" ? "'FILL' 1" : "'FILL' 0" }}>diamond</span>
               <span className="text-[10px] tracking-tight mt-0.5">Destacados</span>
             </button>
 
@@ -1180,7 +1346,6 @@ export default function App() {
             <button 
               onClick={() => {
                 setActiveTab("citas");
-                triggerToast("Escoge fecha y hora de reserva");
               }}
               className={`flex flex-col items-center justify-center w-16 h-12 transition-all cursor-pointer ${
                 activeTab === "citas" 
@@ -1196,7 +1361,6 @@ export default function App() {
             <button 
               onClick={() => {
                 setActiveTab("mi-reserva");
-                triggerToast("Revisa tu resumen de reserva premium");
               }}
               className={`flex flex-col items-center justify-center w-16 h-12 transition-all cursor-pointer ${
                 activeTab === "mi-reserva" 
@@ -1223,7 +1387,7 @@ export default function App() {
               <div className="flex flex-col gap-1.5">
                 <span className="text-lg font-bold text-white tracking-tight">¡Cita Confirmada!</span>
                 <p className="text-xs text-[#d5c3bd] leading-relaxed">
-                  Tu experiencia en <strong className="text-white">{selectedSalon.name}</strong> está reservada para el <span className="text-[#fec4b0] font-bold">{selectedDateDay} de Noviembre</span> a las <span className="text-[#fec4b0] font-bold">{selectedTime}</span>.
+                  Tu experiencia en <strong className="text-white">{selectedSalon.name}</strong> está reservada para el <span className="text-[#fec4b0] font-bold">{selectedDateDay} de Octubre</span> a las <span className="text-[#fec4b0] font-bold">{selectedTime}</span>.
                 </p>
               </div>
 
@@ -1231,7 +1395,6 @@ export default function App() {
                 onClick={() => {
                   setIsSuccessModalOpen(false);
                   setActiveTab("mi-reserva");
-                  triggerToast("¡Reserva añadida con éxito!");
                 }}
                 className="w-full h-11 rounded-full bg-[#fec4b0] text-[#311307] text-xs font-bold uppercase tracking-wider hover:brightness-105 active:scale-95 transition-transform"
               >
@@ -1240,6 +1403,254 @@ export default function App() {
             </div>
           </div>
         )}
+
+        {/* Salon Detail Modal (photo, info, services, booking CTA) */}
+        {detailSalon && (
+          <div className="absolute inset-0 z-[95] flex items-end justify-center">
+            <div
+              onClick={() => setDetailSalon(null)}
+              className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+            />
+            <div className="relative w-full max-h-[88%] overflow-y-auto no-scrollbar rounded-t-[28px] bg-[#1b1a1c] border-t border-x border-[#353437]/40 shadow-2xl">
+              <div className="relative h-44 shrink-0">
+                <img
+                  src={detailSalon.image}
+                  alt={detailSalon.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1b1a1c] via-[#1b1a1c]/30 to-transparent"></div>
+                <button
+                  onClick={() => setDetailSalon(null)}
+                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#131315]/80 backdrop-blur-md flex items-center justify-center text-white active:scale-95 transition-transform"
+                >
+                  <span className="material-symbols-outlined text-[18px]">close</span>
+                </button>
+                <span className="absolute bottom-3 left-4 px-2.5 py-1 rounded-full bg-[#0e0e10]/80 backdrop-blur-md text-[#fec4b0] text-[10px] font-bold uppercase tracking-wider">
+                  {CATEGORY_LABELS[detailSalon.category]}
+                </span>
+              </div>
+
+              <div className="p-5 pt-3 space-y-4">
+                <div>
+                  <h3 className="text-lg font-bold text-white tracking-tight leading-snug">{detailSalon.name}</h3>
+                  <div className="mt-1.5 flex items-center gap-1.5">
+                    <StarRating rating={detailSalon.rating} />
+                    <span className="text-xs font-bold text-white">{detailSalon.rating}</span>
+                    <span className="text-[10px] text-[#d5c3bd]">({detailSalon.reviewsCount} reseñas)</span>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.15em] text-[#fec4b0]">Quiénes somos</p>
+                  <p className="text-xs text-[#d5c3bd] leading-relaxed">
+                    {detailSalon.description || "Espacio dedicado al cuidado y la belleza con atención profesional."}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#fec4b0]">Servicios que ofrecen · toca para elegir</p>
+                  <div className="space-y-1.5">
+                    {detailSalon.services.map((srv) => {
+                      const isChecked = detailSelected.includes(srv.name);
+                      return (
+                        <button
+                          key={srv.name}
+                          onClick={() => {
+                            setDetailSelected(isChecked
+                              ? detailSelected.filter(n => n !== srv.name)
+                              : [...detailSelected, srv.name]);
+                          }}
+                          className={`w-full flex items-center justify-between gap-2 p-2.5 rounded-xl border transition-all active:scale-[0.99] cursor-pointer ${
+                            isChecked
+                              ? "bg-[#713a24]/30 border-[#fec4b0]/50 shadow-[0_0_12px_rgba(224,169,150,0.2)]"
+                              : "bg-[#2a2a2c]/50 border-[#353437]/25 hover:border-[#353437]/70"
+                          }`}
+                        >
+                          <span className="flex items-center gap-2 min-w-0">
+                            <span
+                              className={`material-symbols-outlined text-[19px] transition-colors ${isChecked ? "text-[#fec4b0]" : "text-[#9e8d88]"}`}
+                              style={{ fontVariationSettings: isChecked ? "'FILL' 1" : "'FILL' 0" }}
+                            >
+                              {isChecked ? "check_circle" : "radio_button_unchecked"}
+                            </span>
+                            <span className={`text-xs font-medium truncate ${isChecked ? "text-white" : "text-[#d5c3bd]"}`}>{srv.name}</span>
+                          </span>
+                          <span className="text-xs font-bold text-[#fec4b0] shrink-0">Bs {srv.price}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#fec4b0]">Datos del negocio</p>
+                  <div className="rounded-xl bg-[#2a2a2c]/50 p-3 space-y-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[16px] text-[#fec4b0] shrink-0">pin_drop</span>
+                      <div className="min-w-0">
+                        <p className="text-[9px] uppercase tracking-wider text-[#9e8d88]">Dirección</p>
+                        <p className="text-xs font-semibold text-white">{detailSalon.location}{detailSalon.distance ? ` · ${detailSalon.distance}` : ""}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[16px] text-[#fec4b0] shrink-0">call</span>
+                      <div className="min-w-0">
+                        <p className="text-[9px] uppercase tracking-wider text-[#9e8d88]">Teléfono</p>
+                        <p className="text-xs font-semibold text-white">{detailSalon.phone}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="material-symbols-outlined text-[16px] text-[#fec4b0] shrink-0 mt-0.5">share</span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[9px] uppercase tracking-wider text-[#9e8d88]">Redes sociales</p>
+                        <div className="mt-1 flex flex-wrap gap-1.5">
+                          {detailSalon.socials.facebook && (
+                            <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-[#1877F2]/15 border border-[#1877F2]/30 text-[10px] font-semibold text-white">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#1877F2]"></span>
+                              {detailSalon.socials.facebook}
+                            </span>
+                          )}
+                          {detailSalon.socials.instagram && (
+                            <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-[#E1306C]/15 border border-[#E1306C]/30 text-[10px] font-semibold text-white">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#E1306C]"></span>
+                              {detailSalon.socials.instagram}
+                            </span>
+                          )}
+                          {detailSalon.socials.tiktok && (
+                            <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-white/10 border border-white/25 text-[10px] font-semibold text-white">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#25F4EE]"></span>
+                              {detailSalon.socials.tiktok}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    {detailSalon.minPrice && (
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-[16px] text-[#fec4b0] shrink-0">payments</span>
+                        <div className="min-w-0">
+                          <p className="text-[9px] uppercase tracking-wider text-[#9e8d88]">Precio mínimo</p>
+                          <p className="text-xs font-semibold text-white">Desde {detailSalon.minPrice}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => {
+                    const s = detailSalon;
+                    const chosen = s.services.filter(srv => detailSelected.includes(srv.name));
+                    setSelectedSalon(s);
+                    setSelectedServices(chosen.length > 0 ? chosen : [s.services[0], ...(s.services[1] ? [s.services[1]] : [])]);
+                    setDetailSalon(null);
+                    setShowAvailable(false);
+                    setActiveTab("citas");
+                  }}
+                  className="w-full h-12 rounded-full bg-gradient-to-r from-[#fec4b0] via-[#e0a996] to-[#ffb599] text-[#311307] font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(224,169,150,0.3)] hover:brightness-105 active:scale-98 transition-all cursor-pointer"
+                >
+                  <span>{detailSelected.length > 0 ? `Reservar cita · ${detailSelected.length} servicio${detailSelected.length === 1 ? "" : "s"}` : "Reservar cita"}</span>
+                  <span className="material-symbols-outlined text-[16px] font-bold">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* User Side Menu (opens from the left, half screen) */}
+        <div className={`absolute inset-0 z-[90] ${isMenuOpen ? "" : "pointer-events-none"}`}>
+          <div
+            onClick={() => setIsMenuOpen(false)}
+            className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
+          />
+          <aside className={`absolute left-0 top-0 bottom-0 w-1/2 min-w-[224px] bg-[#1b1a1c] border-r border-[#353437]/40 shadow-2xl transition-transform duration-300 ease-out flex flex-col ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+            <div className="relative bg-gradient-to-br from-[#713a24]/60 via-[#201f21] to-[#131315] p-4 pt-6 overflow-hidden">
+              <div className="absolute -top-8 -right-8 w-28 h-28 bg-[#fec4b0]/15 rounded-full blur-2xl pointer-events-none"></div>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-3 right-3 w-7 h-7 rounded-full bg-[#0e0e10]/60 flex items-center justify-center text-[#d5c3bd] hover:text-white"
+              >
+                <span className="material-symbols-outlined text-[16px]">close</span>
+              </button>
+              <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#fec4b0] to-[#713a24] p-[2px] shrink-0">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgyjyB21B9RPYiDrRCsHhrJrE52RoouOhYZEpN5cOaeowRIYkHqcIIzLN7LuxodvyKyptJAA7OaYTFfzHJqdU4JK5Gix2sbBbj9lMsK5Y3VU2MMrbNQ0SqOHauwMmnLw_ZrgU5JD70xsCqStnCuP4YTGWkMm5l-zop6z6mjN1-X8L0WUQa3o7XlIOzM-cNzh4E6VeTjTFnwcpGsNauKrBJ48TGXPpSNV4_YBKRfi06sp-FqyL2e1kw"
+                  alt="Silvana Profile"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              <h3 className="mt-2 text-base font-bold text-white tracking-tight">Silvana 👋</h3>
+              <p className="mt-0.5 text-[10px] text-[#d5c3bd] truncate">silvana.user@gmail.com</p>
+            </div>
+
+            <div className="flex-1 overflow-y-auto no-scrollbar p-3 space-y-4">
+              <div>
+                <p className="px-1 mb-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-[#9e8d88]">Datos</p>
+                <div className="rounded-xl bg-[#2a2a2c]/50 p-2.5 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[14px] text-[#fec4b0] shrink-0">badge</span>
+                    <div className="min-w-0">
+                      <p className="text-[8px] uppercase tracking-wider text-[#9e8d88]">ID de usuario</p>
+                      <p className="text-[11px] font-bold text-white truncate">SV-TJ-0847</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[14px] text-[#fec4b0] shrink-0">person</span>
+                    <div className="min-w-0">
+                      <p className="text-[8px] uppercase tracking-wider text-[#9e8d88]">Nombre</p>
+                      <p className="text-[11px] font-bold text-white truncate">Silvana</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[14px] text-[#fec4b0] shrink-0">location_on</span>
+                    <div className="min-w-0">
+                      <p className="text-[8px] uppercase tracking-wider text-[#9e8d88]">Ciudad</p>
+                      <p className="text-[11px] font-bold text-white truncate">Tarija, Bolivia</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p className="px-1 mb-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-[#9e8d88]">Mi cuenta</p>
+                <div className="space-y-1">
+                  <button
+                    onClick={() => { setIsMenuOpen(false); setActiveTab("mi-reserva"); }}
+                    className="w-full flex items-center gap-2 p-2 rounded-xl bg-[#2a2a2c]/50 hover:bg-[#2a2a2c] transition-colors text-left"
+                  >
+                    <span className="w-7 h-7 rounded-lg bg-[#713a24]/50 flex items-center justify-center text-[#fec4b0] shrink-0">
+                      <span className="material-symbols-outlined text-[16px]">calendar_today</span>
+                    </span>
+                    <span className="flex-1 text-[11px] font-semibold text-white">Mis reservas</span>
+                    <span className="text-[9px] font-bold text-[#311307] bg-[#e0a996] px-1.5 py-0.5 rounded-full">{confirmedBookings.length}</span>
+                  </button>
+                  <button
+                    onClick={() => { setIsMenuOpen(false); setActiveTab("explorar"); }}
+                    className="w-full flex items-center gap-2 p-2 rounded-xl bg-[#2a2a2c]/50 hover:bg-[#2a2a2c] transition-colors text-left"
+                  >
+                    <span className="w-7 h-7 rounded-lg bg-[#713a24]/50 flex items-center justify-center text-[#fec4b0] shrink-0">
+                      <span className="material-symbols-outlined text-[16px]">favorite</span>
+                    </span>
+                    <span className="flex-1 text-[11px] font-semibold text-white">Favoritos</span>
+                    <span className="text-[9px] font-bold text-[#311307] bg-[#e0a996] px-1.5 py-0.5 rounded-full">{favorites.length}</span>
+                  </button>
+                  <button
+                    onClick={() => { setIsMenuOpen(false); setActiveTab("destacados"); }}
+                    className="w-full flex items-center gap-2 p-2 rounded-xl bg-[#2a2a2c]/50 hover:bg-[#2a2a2c] transition-colors text-left"
+                  >
+                    <span className="w-7 h-7 rounded-lg bg-[#713a24]/50 flex items-center justify-center text-[#fec4b0] shrink-0">
+                      <span className="material-symbols-outlined text-[16px]">bookmark</span>
+                    </span>
+                    <span className="flex-1 text-[11px] font-semibold text-white">Guardados</span>
+                    <span className="text-[9px] font-bold text-[#311307] bg-[#e0a996] px-1.5 py-0.5 rounded-full">{bookmarks.length}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p className="p-3 pt-1 text-[8px] text-[#9e8d88] text-center">Tarija Sanctuary · v1.0.0</p>
+          </aside>
+        </div>
 
       </div>
     </div>
