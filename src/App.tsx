@@ -372,13 +372,13 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-[#131315] text-[#e5e1e4] flex justify-center p-0 md:p-6 overflow-x-hidden select-none">
+    <div className="h-dvh md:h-auto md:min-h-screen bg-[#131315] text-[#e5e1e4] flex justify-center md:items-center p-0 md:p-6 overflow-hidden select-none">
       
-      {/* Phone Frame for high fidelity look and design consistency */}
-      <div className="relative w-full max-w-md bg-[#131315] min-h-[880px] md:rounded-[40px] md:border-8 md:border-[#201f21] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden">
+      {/* Phone Frame: altura exacta al viewport en móvil, marco fijo en desktop */}
+      <div className="relative w-full max-w-md bg-[#131315] h-dvh md:h-[min(880px,94dvh)] md:rounded-[40px] md:border-8 md:border-[#201f21] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden">
         
         {/* iOS StatusBar Mockup */}
-        <header className="sticky top-0 w-full z-50 pt-3 px-6 bg-[#131315]/85 backdrop-blur-2xl border-b border-[#201f21]/30">
+        <header className="shrink-0 sticky top-0 w-full z-50 pt-3 px-6 bg-[#131315]/85 backdrop-blur-2xl border-b border-[#201f21]/30">
         {/* Header Branding Container */}
           <div className="h-14 mt-2 flex items-center justify-between">
             <div className="flex flex-col">
@@ -409,14 +409,14 @@ export default function App() {
 
         {/* Dynamic Toast System */}
         {toastMessage && (
-          <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-[#2a2a2c]/90 backdrop-blur-xl border border-[#fec4b0]/25 px-4 py-2.5 rounded-full text-xs text-[#fec4b0] shadow-2xl flex items-center gap-2 animate-bounce">
+          <div className="absolute top-24 left-1/2 -translate-x-1/2 z-50 bg-[#2a2a2c]/90 backdrop-blur-xl border border-[#fec4b0]/25 px-4 py-2.5 rounded-full text-xs text-[#fec4b0] shadow-2xl flex items-center gap-2 animate-bounce">
             <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
             <span className="font-semibold">{toastMessage}</span>
           </div>
         )}
 
-        {/* Main Interactive Screen Content */}
-        <main className="flex-1 pb-32 overflow-y-auto no-scrollbar">
+        {/* Main Interactive Screen Content (scroll interno, el nav queda fijo) */}
+        <main className="flex-1 min-h-0 pb-32 overflow-y-auto no-scrollbar">
           
           {/* TAB 1: EXPLORAR (Hola, Valentina Screen) */}
           {activeTab === "explorar" && (
@@ -1141,7 +1141,7 @@ export default function App() {
         </main>
 
         {/* Floating iOS Bottom Tab Navigator exactly matching the screenshot style and data-paths */}
-        <nav className="absolute bottom-0 w-full z-50 pb-safe px-5 mb-3 pointer-events-none">
+        <nav className="absolute bottom-0 w-full z-50 px-5 pointer-events-none">
           <div className="pointer-events-auto h-16 w-full max-w-md mx-auto rounded-full bg-[#201f21]/80 backdrop-blur-2xl shadow-[0_16px_40px_-8px_rgba(0,0,0,0.7)] flex items-center justify-around px-2 border border-[#353437]/45">
             
             {/* Tab: Explorar */}
