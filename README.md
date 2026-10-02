@@ -1,20 +1,26 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Tarija Sanctuary
 
-# Run and deploy your AI Studio app
+Experiencia premium para descubrir salones de belleza, estética y bienestar en
+Tarija, Bolivia, y reservar citas al instante.
 
-This contains everything you need to run your app locally.
+## Desarrollo local
 
-View your app in AI Studio: https://ai.studio/apps/16d7fd05-f29d-4164-81f7-1bd76e9b2971
+**Requisito:** Node.js 20.19+ o 22.12+ (recomendado Node 24).
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
+1. Instalar dependencias:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Levantar el servidor de desarrollo:
    `npm run dev`
+3. Abrir `http://localhost:3000`
+
+## Scripts
+
+- `npm run dev` — servidor de desarrollo (puerto 3000)
+- `npm run build` — compilación de producción (`dist/`)
+- `npm run preview` — vista previa de la compilación
+- `npm run lint` — verificación de tipos (`tsc --noEmit`)
+
+## Despliegue
+
+Cada push a `main` compila y publica automáticamente en GitHub Pages
+mediante el workflow `.github/workflows/deploy-pages.yml`.

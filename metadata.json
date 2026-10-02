@@ -1,6 +1,0 @@
-{
-  "name": "Tarija Sanctuary",
-  "description": "Premium beauty, salon, and wellness booking experience in Tarija, Bolivia. Discover the best local stylists and book appointments instantly.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
